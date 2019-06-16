@@ -25,7 +25,7 @@ model.compile(optimizer='adam',
               loss='mse')
 
 
-# model = load_model("models/neural_network - 512x1024x512 - 35.h5") # use this to load the model
+model = load_model("models/neural_network - 512x1024x512 - 35.h5") # use this to load the model
 
 
 def transform(state):

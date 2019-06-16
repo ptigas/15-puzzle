@@ -61,6 +61,7 @@ class Board:
                 self.board[x][y] = self.board[x][y + 1]
                 self.board[x][y + 1] = 0
                 self.blank_position[1] += 1
+                return True
 
         elif direction == 2:
             # moving up
@@ -68,6 +69,7 @@ class Board:
                 self.board[x][y] = self.board[x - 1][y]
                 self.board[x - 1][y] = 0
                 self.blank_position[0] -= 1
+                return True
 
         elif direction == 3:
             # moving left
@@ -75,6 +77,7 @@ class Board:
                 self.board[x][y] = self.board[x][y - 1]
                 self.board[x][y - 1] = 0
                 self.blank_position[1] -= 1
+                return True
 
         elif direction == 4:
             # moving down
@@ -82,6 +85,9 @@ class Board:
                 self.board[x][y] = self.board[x + 1][y]
                 self.board[x + 1][y] = 0
                 self.blank_position[0] += 1
+                return True
+
+        return False
 
     def get_board(self):
         """
