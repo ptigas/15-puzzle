@@ -4,7 +4,7 @@ from board import *
 import random
 import numpy as np
 import time
-
+import itertools
 
 def random_state(N, moves):
     state = Board()
@@ -19,8 +19,15 @@ def group(a, d):
     return np.array(res)
 
 N = 4
-puzzle = random_state(N, 60)
+puzzle = random_state(N, 50)
 print(puzzle)
 t0 = time.time()
-a_star(puzzle, neural_heuristic)
-print(time.time() - t0)
+path, _ = a_star(puzzle, neural_heuristic)
+print("Solved using neural network in {}".format(time.time() - t0))
+
+with open("solution.txt", "w") as f:
+    for p in path:
+        f.write("{}\n".format(list(itertools.chain.from_iterable(p.board))))
+
+#a_star(puzzle, manhattan_heuristic)
+#print("Solved using heuristics in {}".format(time.time() - t0))
